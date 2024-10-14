@@ -71,7 +71,7 @@ class _SignupPageState extends State<SignupPage> {
 
   Widget _buildTitle() {
     return const Text(
-      'Signup.',
+      'Sign Up.',
       style: TextStyle(
         fontSize: 50,
         fontWeight: FontWeight.bold,
