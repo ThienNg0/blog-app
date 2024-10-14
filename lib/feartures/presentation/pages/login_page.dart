@@ -1,37 +1,34 @@
 import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/feartures/presentation/pages/auth_gradian_button.dart';
-import 'package:blog_app/feartures/presentation/pages/login_page.dart';
 import 'package:blog_app/feartures/presentation/widgest/auth_field.dart';
 import 'package:flutter/material.dart';
+import 'signup_page.dart'; // Nhập trang SignupPage
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   // Chỉnh sửa route để điều hướng đến LoginPage
-  static Route<dynamic> route() => MaterialPageRoute(builder: (context) => const SignupPage());
+  static Route<dynamic> route() => MaterialPageRoute(builder: (context) => const LoginPage());
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -41,11 +38,6 @@ class _SignupPageState extends State<SignupPage> {
             children: [
               _buildTitle(),
               const SizedBox(height: 30),
-              AuthField(
-                hintText: "Name",
-                controller: nameController,
-              ),
-              const SizedBox(height: 15),
               AuthField(
                 hintText: "Email",
                 controller: emailController,
@@ -58,10 +50,10 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 20),
               const AuthGradientButton(
-                buttonText: 'Sign Up',
+                buttonText: 'Login',
               ),
               const SizedBox(height: 20),
-              _buildSignInText(context),
+              _buildSignUpText(context),
             ],
           ),
         ),
@@ -71,7 +63,7 @@ class _SignupPageState extends State<SignupPage> {
 
   Widget _buildTitle() {
     return const Text(
-      'Signup.',
+      'Login.',
       style: TextStyle(
         fontSize: 50,
         fontWeight: FontWeight.bold,
@@ -79,13 +71,13 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  Widget _buildSignInText(BuildContext context) {
+  Widget _buildSignUpText(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Chuyển hướng đến LoginPage
+        // Điều hướng đến trang đăng ký
         Navigator.push(
           context,
-          LoginPage.route(),
+          SignupPage.route(),
         );
       },
       child: RichText(
@@ -94,9 +86,9 @@ class _SignupPageState extends State<SignupPage> {
             fontSize: 16,
           ),
           children: [
-            const TextSpan(text: 'Already have an account? '),
+            const TextSpan(text: 'Don\'t have an account? '),
             TextSpan(
-              text: 'Sign in',
+              text: 'Sign Up',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppPallete.gradient2,

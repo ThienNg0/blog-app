@@ -14,12 +14,17 @@ class AppTheme {
 
   static final drakThemeMode = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: AppPallete.backgroundColor, // Màu nền của Scaffold
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppPallete.backgroundColor, // Màu nền của AppBar
+      elevation: 0, // Độ đổ bóng của AppBar
+    ),
     inputDecorationTheme: InputDecorationTheme( // Theme cho InputField
       contentPadding: const EdgeInsets.all(27), // Khoảng cách giữa nội dung và viền
       enabledBorder: _borderRadius(), // Đường viền khi ô không được chọn
       focusedBorder: _borderRadius(AppPallete.gradient2), // Đường viền khi ô được chọn
       errorBorder: _borderRadius(Colors.red), // Đường viền khi có lỗi
       focusedErrorBorder: _borderRadius(Colors.red), // Đường viền khi có lỗi và đang focus
+
     ),
   );
 }

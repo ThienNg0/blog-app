@@ -1,13 +1,42 @@
+import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 
-class AuthGradianButton extends StatelessWidget {
-  const AuthGradianButton({super.key});
+class AuthGradientButton extends StatelessWidget {
+  final String buttonText;
+  const AuthGradientButton({super.key,required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: (){}, child: Text('Sign up') ,style: ElevatedButton.styleFrom(
-      fixedSize: const Size(395, 55),
-
+    return InkWell(
+      borderRadius: BorderRadius.circular(12), // Đảm bảo bo tròn khi nhấn
+      onTap: () {
+        // Xử lý sự kiện khi nhấn vào button
+      },
+      child: Ink(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [
+              AppPallete.gradient1,
+              AppPallete.gradient2,
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          borderRadius: BorderRadius.circular(40), // Bo tròn viền button
+        ),
+        child: Container(
+          alignment: Alignment.center,
+          width: 395,
+          height: 55,
+          child:  Text(
+            buttonText,
+            style: const TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w600,
+              color: Colors.white, // Màu chữ trắng để nổi bật trên gradient
+            ),
+          ),
+        ),
       ),
     );
   }
