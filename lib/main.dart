@@ -17,8 +17,6 @@ void main() async {
     debugPrint('Error initializing Supabase: $e');
   }
 }
-
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

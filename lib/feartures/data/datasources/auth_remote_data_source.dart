@@ -34,7 +34,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         password: password,
         data: {'name': name},
       );
-
+    
       // Kiểm tra nếu đăng ký không thành công
       if (response.user == null) {
         throw const ServerException('User creation failed. User is null.');
