@@ -27,7 +27,8 @@ class _SignupPageState extends State<SignupPage> {
     nameController.dispose();
     super.dispose();
   }
-
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
