@@ -8,7 +8,8 @@ class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   // Chỉnh sửa route để điều hướng đến LoginPage
-  static Route<dynamic> route() => MaterialPageRoute(builder: (context) => const LoginPage());
+  static Route<dynamic> route() =>
+      MaterialPageRoute(builder: (context) => const LoginPage());
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -49,9 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                 isObscureText: true,
               ),
               const SizedBox(height: 20),
-              const AuthGradientButton(
-                buttonText: 'Login',
-              ),
+              AuthGradientButton(buttonText: 'Login', onTap: () {}),
               const SizedBox(height: 20),
               _buildSignUpText(context),
             ],

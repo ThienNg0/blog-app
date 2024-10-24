@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 
 class AuthGradientButton extends StatelessWidget {
   final String buttonText;
-  const AuthGradientButton({super.key,required this.buttonText});
-
+  final VoidCallback onTap;
+  const AuthGradientButton({super.key,required this.buttonText,required this.onTap});
+  
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(12), // Đảm bảo bo tròn khi nhấn
       onTap: () {
         // Xử lý sự kiện khi nhấn vào button
+        
       },
       child: Ink(
         decoration: BoxDecoration(

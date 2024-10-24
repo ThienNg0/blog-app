@@ -8,7 +8,7 @@ class AppTheme {
         color: color, // Màu đường viền của ô nhập liệu
         width: 3, // Độ rộng của đường viền
       ),
-      borderRadius: BorderRadius.all(Radius.circular(10)), // Bo tròn góc viền
+      borderRadius: const BorderRadius.all(Radius.circular(10)), // Bo tròn góc viền
     );
   }
 

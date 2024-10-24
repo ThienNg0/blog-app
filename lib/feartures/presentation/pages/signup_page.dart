@@ -2,13 +2,17 @@ import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/feartures/presentation/pages/auth_gradian_button.dart';
 import 'package:blog_app/feartures/presentation/pages/login_page.dart';
 import 'package:blog_app/feartures/presentation/widgest/auth_field.dart';
+import 'package:blog_app/feartures/presentation/bloc/auth_bloc.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
   // Chỉnh sửa route để điều hướng đến LoginPage
-  static Route<dynamic> route() => MaterialPageRoute(builder: (context) => const SignupPage());
+  static Route<dynamic> route() =>
+      MaterialPageRoute(builder: (context) => const SignupPage());
 
   @override
   State<SignupPage> createState() => _SignupPageState();
@@ -27,8 +31,7 @@ class _SignupPageState extends State<SignupPage> {
     nameController.dispose();
     super.dispose();
   }
-  
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +61,18 @@ class _SignupPageState extends State<SignupPage> {
                 isObscureText: true,
               ),
               const SizedBox(height: 20),
-              const AuthGradientButton(
+              AuthGradientButton(
                 buttonText: 'Sign Up',
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    context.read<AuthBloc>().add(
+                     AuthSignUp(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+          name: nameController.text.trim(),
+        ),);
+                  }
+                },
               ),
               const SizedBox(height: 20),
               _buildSignInText(context),
