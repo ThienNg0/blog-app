@@ -1,4 +1,5 @@
 import 'package:blog_app/core/error/exceptions.dart';
+import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // Interface AuthRemoteDataSource
@@ -21,28 +22,29 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   AuthRemoteDataSourceImpl(this.supabaseClient);
 
-  @override
+ @override
   Future<String> signUpWithEmailPassword({
     required String name,
     required String email,
     required String password,
   }) async {
     try {
-      // Gọi Supabase API để đăng ký
+      debugPrint('Calling Supabase signUp with email: $email');
       final response = await supabaseClient.auth.signUp(
         email: email,
         password: password,
         data: {'name': name},
       );
-    
-      // Kiểm tra nếu đăng ký không thành công
+
       if (response.user == null) {
+        debugPrint('Sign-up failed: user is null');
         throw const ServerException('User creation failed. User is null.');
       }
 
+      debugPrint('Sign-up successful, user ID: ${response.user!.id}');
       return response.user!.id;
     } catch (e) {
-      // Ném ngoại lệ nếu có lỗi xảy ra
+      debugPrint('Sign-up failed with exception: $e');
       throw ServerException(e.toString());
     }
   }
